@@ -1,4 +1,4 @@
-
+import {ThemeProvider} from "@/components/theme-provider";
 
 import "./globals.css";
 
@@ -9,9 +9,16 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body>
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );

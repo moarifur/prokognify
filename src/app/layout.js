@@ -1,5 +1,5 @@
-import {ThemeProvider} from "@/components/theme-provider";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata = {
@@ -10,16 +10,18 @@ export const metadata = {
 const RootLayout = ({ children }) => {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    {children}
-                </ThemeProvider>
-            </body>
+        <body>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            <ClerkProvider>
+                {children}
+            </ClerkProvider>
+        </ThemeProvider>
+        </body>
         </html>
     );
 };

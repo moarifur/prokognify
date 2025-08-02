@@ -20,10 +20,11 @@ npx shadcn@latest init
 ```
 
 During initialization:
-- Confirm creating the components.json file
+- Confirm creating the `components.json` file
 - Select your preferred base color (e.g., Slate)
 
 Example successful output:
+
 ```
 ✔ You need to create a components.json file to add components. Proceed? ... yes
 ✔ Which color would you like to use as the base color? » Slate
@@ -41,6 +42,7 @@ npx shadcn@latest add button
 ```
 
 Example successful output:
+
 ```
 ✔ Checking registry.
 ✔ Installing dependencies.
@@ -172,7 +174,17 @@ export default function HomePage() {
 }
 ```
 
-## 8. Additional Components
+## 8. Git Commit and Push
+
+Once everything is working correctly, commit your changes:
+
+```bash
+git add .
+git commit -m "feat: added ShadCN UI setup and implemented theme toggle with dark mode"
+git push origin main
+```
+
+## 9. Additional Components
 
 Add more ShadCN components as needed:
 
@@ -182,7 +194,7 @@ npx shadcn@latest add dropdown-menu
 npx shadcn@latest add card
 ```
 
-## 9. Customizing Your Theme
+## 10. Customizing Your Theme
 
 To customize the theme colors, edit your `tailwind.config.js`:
 
@@ -219,7 +231,7 @@ module.exports = {
 };
 ```
 
-## 10. Troubleshooting Tips
+## 11. Troubleshooting Tips
 
 ### Components not updating?
 - Run `npx shadcn@latest add component-name --overwrite` to force update

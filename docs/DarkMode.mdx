@@ -122,14 +122,14 @@ export default function RootLayout({ children }) {
 ## 6. Create a Theme Toggle Component
 
 ```jsx
-// components/theme-toggle.jsx
+// components/DarkModeToggle.jsx
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export function ThemeToggle() {
+export function DarkModeToggle() {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -151,7 +151,7 @@ export function ThemeToggle() {
 ```jsx
 // app/page.js
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { DarkModeToggle } from "@/components/theme-toggle";
 
 export default function HomePage() {
   return (
@@ -164,7 +164,7 @@ export default function HomePage() {
         <Button variant="destructive">Destructive</Button>
       </div>
 
-      <ThemeToggle />
+      <DarkModeToggle />
 
       <p className="text-muted-foreground">
         Click the moon/sun icon to toggle theme

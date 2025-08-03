@@ -1,16 +1,26 @@
 // ============================================================================
 // LAYOUT.JS - Root Application Layout
 // ============================================================================
-// Root layout component that wraps the entire application with theme provider
-// and sets up global metadata and HTML structure.
+// This is the root layout component that wraps all pages in the application.
+// It provides:
+// - Global theme management through ThemeProvider
+// - Basic HTML document structure
+// - Application-wide metadata
+// - Theme transition handling
+//
+// This file is required in Next.js 13+ and replaces _app.js and _document.js
 // ============================================================================
 
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 /**
- * Application metadata for SEO and browser display
- * Used by Next.js for generating meta tags
+ * Application metadata configuration
+ * @constant {Object} metadata
+ * @property {string} title - Default title for all pages
+ * @property {string} description - Default description for SEO
+ *
+ * Note: This metadata can be overridden by individual pages
  */
 export const metadata = {
     title: "ProKognify",
@@ -18,23 +28,43 @@ export const metadata = {
 };
 
 /**
- * Root layout component that wraps all pages
- * Provides theme context and basic HTML structure
- * @param {Object} props - Component props
- * @param {ReactNode} props.children - Page content to render
- * @returns {JSX.Element} Complete HTML document structure
+ * RootLayout Component
+ *
+ * The foundational layout for all pages in the application. It:
+ * - Sets up the HTML document structure
+ * - Initializes theme management
+ * - Applies global styles
+ * - Handles system theme preferences
+ *
+ * @param {Object} props - Component properties
+ * @param {React.ReactNode} props.children - Child components to render
+ * @returns {JSX.Element} The complete page structure
+ *
+ * @example
+ * // Used automatically by Next.js to wrap all pages
+ * <RootLayout>
+ *   <PageContent />
+ * </RootLayout>
  */
 const RootLayout = ({ children }) => {
     return (
-        // Suppress hydration warnings for theme
-        <html lang="en" suppressHydrationWarning>
+        <html
+            lang="en"
+            suppressHydrationWarning // Prevents hydration mismatch warnings
+        >
         <body>
-        {/* Theme provider with system theme detection */}
+        {/*
+                  * ThemeProvider Configuration:
+                  * - attribute="class": Uses CSS classes for theme switching
+                  * - defaultTheme="system": Respects OS preference by default
+                  * - enableSystem: Enables automatic system theme detection
+                  * - disableTransitionOnChange: Prevents flash during theme changes
+                  */}
         <ThemeProvider
-            attribute="class"           // Use class-based theme switching
-            defaultTheme="system"       // Default to system preference
-            enableSystem                // Allow system theme detection
-            disableTransitionOnChange   // Prevent flash during theme changes
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
         >
             {children}
         </ThemeProvider>
